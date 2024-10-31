@@ -1,0 +1,12 @@
+# Arcade: populate a field in a feature layer with a distinct list of the values from a given field in related records
+# (Hopefully) useful to symbolize values of related records since this can't be done directly
+  
+var related = FeatureSetByRelationshipName($feature,"ArcCounty_Merged")
+
+var all = []
+
+for (var r in related) {
+    Push(all, r.Crop_Name)
+}
+    
+return Concatenate(Distinct(all), ", ")
